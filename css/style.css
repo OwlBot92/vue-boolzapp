@@ -143,6 +143,9 @@ body{
     font-size: 14px;
     border-bottom: 1px solid rgb(231, 231, 231);
 }
+.active-chat{
+    background-color: #e9ebeb;
+}
 
 
 /* ----- CHAT COLUMN ----- */
@@ -189,7 +192,7 @@ body{
 .received{
     margin: 5px;
     position: relative;
-    left: 10%;
+    left: 5%;
     background-color: white;
     border-radius: 10px;
     width: 200px;
@@ -198,7 +201,7 @@ body{
 .sent{
     margin: 5px;
     position: relative;
-    left: 60%;
+    left: 62%;
     background-color: #d5f9ba;
     border-radius: 10px;
     width: 200px;

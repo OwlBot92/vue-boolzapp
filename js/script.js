@@ -2,11 +2,14 @@ var app = new Vue({
     el: "#root",
     data: {
         selectedContact: 0,
+        messaggio: "",
+        searchTxt : "",
         contacts: [
             {
                 name: 'Michele',
                 avatar: '_1',
                 visible: true,
+                bg: "active-chat",
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -29,6 +32,7 @@ var app = new Vue({
                 name: 'Fabio',
                 avatar: '_2',
                 visible: true,
+                bg: "",
                 messages: [
                     {
                         date: '20/03/2020 16:30:00',
@@ -51,6 +55,7 @@ var app = new Vue({
                 name: 'Samuele',
                 avatar: '_3',
                 visible: true,
+                bg: "",
                 messages: [
                     {
                         date: '28/03/2020 10:10:40',
@@ -90,8 +95,38 @@ var app = new Vue({
     },
 
     methods: {
-        showChat(oggetto){
+        showChat(indice){
+            this.selectedContact = indice;
+            this.contacts.forEach((value, i) => (i != indice) ? value.bg = "" : value.bg = "active-chat");
+        },
 
+        sendMsg(){
+            let currentChat = this.contacts[this.selectedContact].messages;
+            currentChat.push(
+                {
+                    date: "00/00/00", // da sistemare con la data corrente
+                    text: this.messaggio,
+                    status: "sent"
+                }
+            )
+            this.messaggio = "";
+            setTimeout(() => { 
+                currentChat.push(
+                    {
+                        date: "00/00/00",
+                        text: "ok",
+                        status: "received"
+                    }
+                )
+            }, 1500);
+        },
+
+        filterChat(){
+            for (const obj of this.contacts){
+                let lowerTxt = obj.name.toLowerCase();
+                let lowerInput = this.searchTxt.toLowerCase();
+                (lowerTxt.includes(lowerInput)) ? obj.visible = true : obj.visible = false;
+            }
         }
     }
 });
