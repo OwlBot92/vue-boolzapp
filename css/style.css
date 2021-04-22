@@ -10,6 +10,7 @@ body{
     height: 100vh;
     background: rgb(206,215,216);
     background: linear-gradient(360deg, rgba(206,215,216,1) 5%, rgba(208,216,217,1) 15%, rgba(220,219,210,1) 85%, rgba(0,150,136,1) 75%);
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,10 +21,11 @@ body{
 /* posizione della finestra principale, che contiene tutto il contenuto */
 #main-window{
     /* temp */
-    height: 700px;
-    width: 1000px;
+    height: 90vh;
+    width: 70%;
+    min-width: 900px;
+    max-width: 1000px;
     background-color: white;
-    
     display: flex;
 }
 
@@ -129,12 +131,15 @@ body{
 /* contacts list */
 .contact-box{
     width: 100%;
+    height: calc(100% - 135px);
+    overflow-y: auto;
 }
 .contact-box img{
     width: 50px;
     margin-right: 10px;
     border-radius: 50%;
 }
+
 .contact-box li{
     display: flex;
     width: 100%;
@@ -152,7 +157,6 @@ body{
 .chat-column{
     width: 65%;
     height: 100%;
-    /* prova */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -183,6 +187,7 @@ body{
     padding-top: 35px;
     height: 100%;
     width: 100%;
+    overflow-y: auto;
     background-image: url("../img/mine.jpg");
 
 }
@@ -206,6 +211,21 @@ body{
     border-radius: 10px;
     width: 200px;
     padding: 10px;
+}
+
+.sent,
+.received{
+    display: flex;
+    justify-content: space-between;
+}
+.sent:hover .fa-chevron-down,
+.received:hover .fa-chevron-down{
+    display: block;
+    cursor: pointer;
+}
+.fa-chevron-down{
+    align-self: flex-start;
+    display: none;
 }
 
 

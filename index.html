@@ -23,9 +23,6 @@
             
             <!-- absolute window -->
             <div id="main-window">
-                <!-- contentent inside the absolute window -->
-                
-
                 <!-- colonna contatti -->
                 <div class="contact-column">
                     <!-- user ROW -->
@@ -93,6 +90,7 @@
                         <div v-for="key in contacts[selectedContact].messages">
                             <div v-bind:class="key.status">
                                 {{ key.text }}
+                                <i class="fas fa-chevron-down"></i>
                             </div>
                         </div>    
                     </div>
