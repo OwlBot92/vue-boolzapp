@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+            integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <title>Boolzapp</title>
+    </head>
+
+    <body>
+
+        <div id="root">
+            <!-- <div class="green-bg"></div> -->
+            
+            <!-- absolute window -->
+            <div id="main-window">
+                <!-- contentent inside the absolute window -->
+                
+
+                <!-- colonna contatti -->
+                <div class="contact-column">
+                    <!-- user ROW -->
+                    <div id="user-pseudo-nav">
+                        <div class="left-nav-side">
+                            <img class="nav-icon" src="img/avatar_8.jpg" alt="">
+                            <span id="user-name">Nome Utente</span>
+                        </div>
+                        <div class="right-nav-side">
+                            <i class="fas fa-circle-notch"></i>
+                            <i class="fas fa-comment-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                    <!-- riga per disabilitare le notifiche -->
+                    <div id="disable-notifications">
+                        <div id="circle-bell">
+                            <i class="fas fa-bell-slash"></i>
+                        </div>
+                        <div class="notifications-txt">
+                            <span>Ricevi notifiche di nuovi messaggi</span>
+                            <a>Attiva notifiche desktop</a>
+                        </div>
+                    </div>
+
+                    <!-- riga di ricerca tra i contatti in rubrica -->
+                    <div class="input-box">
+                        <input id="contact-search" type="text" placeholder="Cerca o inizia una nuova chat">
+                        <i class="fas fa-search"></i>
+                    </div>
+
+                    <div class="contact-box">
+                        <ul>
+                            <!-- temp LI di prova -->
+                            <li v-for="obj in contacts" v-on:click="showChat(obj)">
+                                <img v-bind:src="`img/avatar${obj.avatar}.jpg`" alt="">
+                                <span>{{obj.name}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <!-- colonna chat -->
+                <div class="chat-column">
+                    <!-- pseudo chat nav -->
+                    <div id="chat-pseudo-nav">
+                        <div class="left-nav-side">
+                            <img class="nav-icon" src="img/avatar_1.jpg" alt="">
+
+                            <div class="contact-chat-info">
+                                <span id="nome-contatto-chat">contatto chat</span>
+                                <span id="ultimo-accesso">ultimo accesso alle</span>
+                            </div>
+                        </div>
+                        <div class="right-nav-side">
+                            <i class="fas fa-search"></i>
+                            <i class="fas fa-paperclip"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+
+                    <!-- chat -->
+                    <div class="messages-box">
+                        <div v-for="key in contacts[selectedContact].messages">
+                            <div v-bind:class="key.status">
+                                {{key.text}}
+                            </div>
+                        </div>    
+                    </div>
+    
+                    <!-- input messaggi -->
+                    <div class="send-msg">
+                        <input type="text" placeholder="Scrivi un messaggio">
+                    </div>
+                </div>
+
+               
+
+            </div>  
+        </div>
+
+
+        <!-- <script src="path/to/dayjs/dayjs.min.js"></script> -->
+        <script src="js/contacts-example.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+
+</html>

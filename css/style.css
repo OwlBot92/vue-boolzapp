@@ -1,0 +1,221 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+}
+#root{
+    height: 100vh;
+    background: rgb(206,215,216);
+    background: linear-gradient(360deg, rgba(206,215,216,1) 5%, rgba(208,216,217,1) 15%, rgba(220,219,210,1) 85%, rgba(0,150,136,1) 75%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+/* posizione della finestra principale, che contiene tutto il contenuto */
+#main-window{
+    /* temp */
+    height: 700px;
+    width: 1000px;
+    background-color: white;
+    
+    display: flex;
+}
+
+/* ----- CONTACTS ----- */
+
+/* colonna contatti */
+.contact-column{
+    width: 35%;
+    height: 100%;
+}
+
+/* psuedo nav utente */
+#user-pseudo-nav{
+    border-right: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #eaeaea;
+    padding: 5px;
+}
+.left-nav-side,
+.right-nav-side{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.right-nav-side .fas{
+    margin-right: 15px;
+    font-size: 14px;
+    color: #aaa;
+}
+.nav-icon{
+    border-radius: 50%;
+    width: 40px;
+    height: auto;
+    margin-right: 5px;
+}
+#user-name{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* Notifications section */
+#disable-notifications{
+    padding: 10px;
+    background-color: #8edbf8;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+#circle-bell{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-right: 10px;
+    background-color: white;
+}
+.fa-bell-slash{
+    color: #8edbf8;
+}
+.notifications-txt{
+    display: flex;
+    flex-direction: column;
+}
+.notifications-txt :first-child,
+.notifications-txt :last-child{
+    font-size: 12px;
+}
+.notifications-txt :last-child{
+    text-decoration: underline;
+    color: grey;
+}
+
+
+/* field di ricerca tra i contatti */
+.input-box{
+    position: relative;
+    background-color: #d8d8d7;
+    padding: 4px;
+}
+#contact-search{
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    font-size: 11px;
+    padding: 4px 50px;
+    width: 100%;
+}
+.input-box .fa-search{
+    position: absolute;
+    font-size: 13px;
+    color: #aaa;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* contacts list */
+.contact-box{
+    width: 100%;
+}
+.contact-box img{
+    width: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.contact-box li{
+    display: flex;
+    width: 100%;
+    padding: 4px;
+    list-style: none;
+    font-size: 14px;
+    border-bottom: 1px solid rgb(231, 231, 231);
+}
+
+
+/* ----- CHAT COLUMN ----- */
+.chat-column{
+    width: 65%;
+    height: 100%;
+    /* prova */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#chat-pseudo-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #eaeaea;
+    padding: 5px;
+}
+
+.contact-chat-info{
+    display: flex;
+    flex-direction: column;
+}
+#nome-contatto-chat{
+    font-size: 13px;
+}
+#ultimo-accesso{
+    font-size: 11px;
+    color: grey;
+}
+
+
+/* messages box */
+.messages-box{
+    padding-top: 35px;
+    height: 100%;
+    width: 100%;
+    background-image: url("../img/mine.jpg");
+
+}
+
+/* chat box */
+
+.received{
+    margin: 5px;
+    position: relative;
+    left: 10%;
+    background-color: white;
+    border-radius: 10px;
+    width: 200px;
+    padding: 10px;
+}
+.sent{
+    margin: 5px;
+    position: relative;
+    left: 60%;
+    background-color: #d5f9ba;
+    border-radius: 10px;
+    width: 200px;
+    padding: 10px;
+}
+
+
+.send-msg{
+    background-color:#f2eeea;
+    padding: 8px;
+}
+.send-msg input{
+    border: none;
+    outline: none;
+    padding: 5px;
+    width: 85%;
+    margin:auto;
+    display: block;
+}
+
