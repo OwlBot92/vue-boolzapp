@@ -29,7 +29,7 @@
                     <div id="user-pseudo-nav">
                         <div class="left-nav-side">
                             <img class="nav-icon" src="img/avatar_8.jpg" alt="">
-                            <span id="user-name">Nome Utente</span>
+                            <span id="user-name">Nico</span>
                         </div>
                         <div class="right-nav-side">
                             <i class="fas fa-circle-notch"></i>
@@ -59,7 +59,11 @@
                             <!-- temp LI di prova -->
                             <li v-for="(obj, index) in contacts" v-on:click="showChat(index)" v-bind:class="obj.bg" v-if="obj.visible">
                                 <img v-bind:src="`img/avatar${obj.avatar}.jpg`" alt="">
-                                <span>{{obj.name}}</span>
+                                
+                                <div class="contact-name-msg">
+                                    <span class="contact-name">{{obj.name}}</span>
+                                    <span class="last-msg">{{ findLast(index) }}</span>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -89,8 +93,14 @@
                     <div class="messages-box">
                         <div v-for="key in contacts[selectedContact].messages">
                             <div v-bind:class="key.status">
-                                {{ key.text }}
-                                <i class="fas fa-chevron-down"></i>
+                                <span>{{ key.text }}</span>
+                                <span class="chat-data">{{ key.date }}</span>
+                                <i class="fas fa-chevron-down" v-on:click="toggleDrop(key)"></i>
+                                
+                                <div class="dropdown" v-if="key.dropD">
+                                    <span class="msg-options">Message Info</span>
+                                    <span class="msg-options" v-on:click="deleteMsg(key)">Delete</span>
+                                </div>
                             </div>
                         </div>    
                     </div>
@@ -104,6 +114,7 @@
             </div>  
         </div>
 
+        <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
         <script src="js/contacts-example.js"></script>
         <script src="js/script.js"></script>
     </body>
