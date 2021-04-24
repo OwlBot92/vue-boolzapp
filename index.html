@@ -32,7 +32,7 @@
                             <span id="user-name">Nico</span>
                         </div>
                         <div class="right-nav-side">
-                            <span id="toggle-dark-text">Toggle Dark</span><i class="fas fa-adjust"  v-on:click="toggleDarkMode()"></i>
+                            <span id="toggle-dark-text" v-on:click="toggleDarkMode()">Toggle Dark <i class="fas fa-adjust"></i></span>
                             <i class="fas fa-comment-alt"></i>
                             <i class="fas fa-ellipsis-v"></i>
                         </div>
@@ -95,13 +95,13 @@
 
                     <!-- chat -->
                     <div class="messages-box">
-                        <div v-for="key in contacts[selectedContact].messages" v-bind:class="resetDark">
+                        <div v-for="key in contacts[selectedContact].messages">
                             <div v-bind:class="key.status">
                                 <span>{{ key.text }}</span>
                                 <span class="chat-data">{{ key.date }}</span>
                                 <i class="fas fa-chevron-down" v-on:click="toggleDrop(key)"></i>
                                 
-                                <div class="dropdown" v-if="key.dropD">
+                                <div class="dropdown" v-if="key.dropD" v-bind:class="resetDark">
                                     <span class="msg-options">Message Info</span>
                                     <span class="msg-options" v-on:click="deleteMsg(key)">Delete</span>
                                 </div>
