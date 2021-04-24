@@ -61,8 +61,11 @@
                                 <img v-bind:src="`img/avatar${obj.avatar}.jpg`" alt="">
                                 
                                 <div class="contact-name-msg">
-                                    <span class="contact-name">{{obj.name}}</span>
-                                    <span class="last-msg">{{ findLast(index) }}</span>
+                                    <div class="li-name-date">
+                                        <span class="contact-name">{{obj.name}}</span>
+                                        <span class="last-msg-date">{{ findLast(index)[0] }}</span>
+                                    </div>
+                                    <span class="last-msg">{{ findLast(index)[1] }}</span>
                                 </div>
                             </li>
                         </ul>
@@ -79,7 +82,8 @@
 
                             <div class="contact-chat-info">
                                 <span id="nome-contatto-chat">{{ contacts[selectedContact].name }}</span>
-                                <span id="ultimo-accesso">ultimo accesso alle</span>
+                                <span id="ultimo-accesso">ultimo accesso alle: <span v-if="filterReceivedMessages(selectedContact).length">{{findLastReceived(selectedContact).hour}}</span><span v-else>N/A</span></span>
+        
                             </div>
                         </div>
                         <div class="right-nav-side">
@@ -107,7 +111,9 @@
     
                     <!-- input messaggi -->
                     <div class="send-msg">
+                        <i class="far fa-smile"></i>
                         <input type="text" placeholder="Scrivi un messaggio" v-model="messaggio" v-on:keyup.enter="sendMsg()">
+                        <i class="fas fa-microphone"></i>
                     </div>
                 </div>
 

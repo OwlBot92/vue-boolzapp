@@ -117,6 +117,7 @@ body{
     font-size: 11px;
     padding: 4px 50px;
     width: 100%;
+    border-radius: 30px;
 }
 .input-box .fa-search{
     position: absolute;
@@ -141,6 +142,7 @@ body{
     border-radius: 50%;
 }
 .contact-box li{
+    cursor: pointer;
     display: flex;
     width: 100%;
     padding: 4px;
@@ -153,7 +155,19 @@ body{
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
+    width: 100%;
 }
+.li-name-date{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.last-msg-date{
+    font-size: 11px;
+    padding-right: 15px;
+}
+
 .contact-name{
     font-weight: 600;
     font-size: 16px;
@@ -239,13 +253,20 @@ body{
 .send-msg{
     background-color:#f2eeea;
     padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.send-msg i{
+    color: #6a7376;
+    cursor: pointer;
 }
 .send-msg input{
     border: none;
     outline: none;
-    padding: 10px;
+    padding: 10px 15px;
     width: 85%;
-    margin:auto;
+    border-radius: 30px;
     display: block;
 }
 
