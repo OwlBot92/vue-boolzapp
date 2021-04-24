@@ -18,7 +18,7 @@
 
     <body>
 
-        <div id="root">
+        <div id="root" v-bind:class="darkMode">
             <!-- <div class="green-bg"></div> -->
             
             <!-- absolute window -->
@@ -28,11 +28,11 @@
                     <!-- user ROW -->
                     <div id="user-pseudo-nav">
                         <div class="left-nav-side">
-                            <img class="nav-icon" src="img/avatar_8.jpg" alt="">
+                            <img class="nav-icon" src="img/avatar_8.jpg" alt="" v-bind:class="resetDark">
                             <span id="user-name">Nico</span>
                         </div>
                         <div class="right-nav-side">
-                            <i class="fas fa-circle-notch"></i>
+                            <span id="toggle-dark-text">Toggle Dark</span><i class="fas fa-adjust"  v-on:click="toggleDarkMode()"></i>
                             <i class="fas fa-comment-alt"></i>
                             <i class="fas fa-ellipsis-v"></i>
                         </div>
@@ -58,7 +58,7 @@
                         <ul>
                             <!-- temp LI di prova -->
                             <li v-for="(obj, index) in contacts" v-on:click="showChat(index)" v-bind:class="obj.bg" v-if="obj.visible">
-                                <img v-bind:src="`img/avatar${obj.avatar}.jpg`" alt="">
+                                <img v-bind:src="`img/avatar${obj.avatar}.jpg`" v-bind:class="resetDark" alt="">
                                 
                                 <div class="contact-name-msg">
                                     <div class="li-name-date">
@@ -78,7 +78,7 @@
                     <!-- pseudo chat nav -->
                     <div id="chat-pseudo-nav">
                         <div class="left-nav-side">
-                            <img class="nav-icon" v-bind:src="`img/avatar${contacts[selectedContact].avatar}.jpg`" alt="">
+                            <img class="nav-icon" v-bind:src="`img/avatar${contacts[selectedContact].avatar}.jpg`" v-bind:class="resetDark" alt="">
 
                             <div class="contact-chat-info">
                                 <span id="nome-contatto-chat">{{ contacts[selectedContact].name }}</span>
@@ -95,7 +95,7 @@
 
                     <!-- chat -->
                     <div class="messages-box">
-                        <div v-for="key in contacts[selectedContact].messages">
+                        <div v-for="key in contacts[selectedContact].messages" v-bind:class="resetDark">
                             <div v-bind:class="key.status">
                                 <span>{{ key.text }}</span>
                                 <span class="chat-data">{{ key.date }}</span>

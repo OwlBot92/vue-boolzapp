@@ -1,6 +1,8 @@
 var app = new Vue({
     el: "#root",
     data: {
+        darkMode: "",
+        resetDark : "",
         selectedContact: 0,
         messaggio: "",
         searchTxt : "",
@@ -271,6 +273,19 @@ var app = new Vue({
             let currentChat = this.contacts[this.selectedContact].messages;
             let toDelete = currentChat.indexOf(key)
             currentChat.splice(toDelete, 1);
+        },
+
+        toggleDarkMode(){
+            if (this.darkMode == ""){
+                this.darkMode = "dark-mode"
+                this.resetDark = "reset-dark";
+            }
+            else{
+                this.darkMode = "";
+                this.resetDark = "";
+            }
+            /* (this.darkMode == "") ? this.darkMode = "dark-mode" : this.darkMode = ""; */
+            console.log(this.darkMode);
         }
     }
 });
