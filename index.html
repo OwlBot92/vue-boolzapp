@@ -32,7 +32,7 @@
                             <span id="user-name">Nico</span>
                         </div>
                         <div class="right-nav-side">
-                            <span id="toggle-dark-text" v-on:click="toggleDarkMode()">Toggle Dark <i class="fas fa-adjust"></i></span>
+                            <span id="toggle-dark-text" v-on:click="toggleDarkMode()">{{lightDark}} Theme <i class="fas fa-adjust"></i></span>
                             <i class="fas fa-comment-alt"></i>
                             <i class="fas fa-ellipsis-v"></i>
                         </div>
@@ -94,7 +94,7 @@
                     </div>
 
                     <!-- chat -->
-                    <div class="messages-box">
+                    <div id="messages-box">
                         <div v-for="key in contacts[selectedContact].messages">
                             <div v-bind:class="key.status">
                                 <span>{{ key.text }}</span>

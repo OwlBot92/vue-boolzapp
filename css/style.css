@@ -15,16 +15,22 @@ body{
     filter: invert(1);
 }
 
+/* Root linea 21 HTML */
 #root{
     height: 100vh;
     background: rgb(206,215,216);
-    background: linear-gradient(360deg, rgba(206,215,216,1) 5%, rgba(208,216,217,1) 15%, rgba(220,219,210,1) 85%, rgba(0,150,136,1) 75%);
+    background: linear-gradient(360deg, 
+    rgba(206,215,216,1) 5%, 
+    rgba(208,216,217,1) 15%, 
+    rgba(220,219,210,1) 90%, 
+    rgba(0,150,136,1) 75%);
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
 
 }
+/* style per il testo del toggle dark/light mode */
 #toggle-dark-text{
     font-size: 12px;
     color: #009688;
@@ -37,7 +43,7 @@ body{
     /* temp */
     height: 97vh;
     width: 90%;
-    min-width: 900px;
+    min-width: 800px;
     max-width: 1400px;
     background-color: rgb(247, 247, 247);
     display: flex;
@@ -82,7 +88,7 @@ body{
     font-weight: 600;
 }
 
-/* Notifications section */
+/* Notifications section linea 41 HTML */
 #disable-notifications{
     padding: 10px;
     background-color: #8edbf8;
@@ -228,11 +234,12 @@ body{
 
 
 /* messages box */
-.messages-box{
+#messages-box{
     padding-top: 35px;
     height: 100%;
     width: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
     background-image: url("../img/mine.jpg");
 
 }
@@ -251,8 +258,9 @@ body{
 
 .sent,
 .received{
+    word-break: break-word;
     border-radius: 10px;
-    width: 200px;
+    width: 30%;
     padding: 10px 10px 20px 10px;
     margin: 5px;
     position: relative;

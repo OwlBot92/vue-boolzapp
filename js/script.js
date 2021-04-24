@@ -1,6 +1,7 @@
 var app = new Vue({
     el: "#root",
     data: {
+        lightDark: "Dark",
         darkMode: "",
         resetDark : "",
         selectedContact: 0,
@@ -214,7 +215,12 @@ var app = new Vue({
                 }
             )
             this.messaggio = "";
-            setTimeout(() => { 
+            this.setBottomScroll(100);
+            this.replymsg();
+        },
+        replymsg(){
+            let currentChat = this.contacts[this.selectedContact].messages;
+            setTimeout(() => {
                 currentChat.push(
                     {
                         dropD: false,
@@ -225,6 +231,7 @@ var app = new Vue({
                     }
                 )
             }, 1500);
+            this.setBottomScroll(1500);
         },
         filterChat(){
             for (const obj of this.contacts){
@@ -284,13 +291,19 @@ var app = new Vue({
             if (this.darkMode == ""){
                 this.darkMode = "dark-mode"
                 this.resetDark = "reset-dark";
+                this.lightDark = "Light"
             }
             else{
                 this.darkMode = "";
                 this.resetDark = "";
+                this.lightDark = "Dark"
             }
-            /* (this.darkMode == "") ? this.darkMode = "dark-mode" : this.darkMode = ""; */
-            console.log(this.darkMode);
+        },
+        setBottomScroll(ms){
+            setTimeout(() => {
+                let chatBox = document.getElementById("messages-box");
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, ms);
         }
     }
 });
