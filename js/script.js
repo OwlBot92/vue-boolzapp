@@ -242,15 +242,20 @@ var app = new Vue({
             let mes = this.contacts[indice].messages;
             let i = mes.length - 1;
             let flag = false;
-            let lastMsgObj = "";
+            let lastMsgObj;
             let slicedText = "";
             while (i >= 0 && flag == false) {
                 lastMsgObj = mes[i];
                 flag = true;
                 i--;
             }
-            (lastMsgObj.text.length > 20) ? slicedText = `${lastMsgObj.text.slice(0, 17)}...` : slicedText = lastMsgObj.text;
-            return [lastMsgObj.hour, slicedText];
+            if (mes.length){
+                (lastMsgObj.text.length > 20) ? slicedText = `${lastMsgObj.text.slice(0, 17)}...` : slicedText = lastMsgObj.text;
+                return [lastMsgObj.hour, slicedText];
+            }
+            else{
+                return ["", slicedText];
+            }
         },
         findLastReceived(indice) {
             let mes = this.contacts[indice].messages;
