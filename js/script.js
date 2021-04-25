@@ -344,10 +344,8 @@ var app = new Vue({
             }
         },
         deleteContact(i){
-            console.log(i);
             this.contacts.splice(i, 1);
-            this.selectedContact = 0;
-            console.log(this.contacts);               
+            this.selectedContact = 0;            
         }
     }
 });
