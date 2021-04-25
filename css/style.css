@@ -221,6 +221,7 @@ body{
     position: absolute;
     top: 30px;
     right: 20px;
+    color: #009688;
 }
 .contact-name-msg:hover .fa-times{
     display: block;
