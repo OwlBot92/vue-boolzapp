@@ -307,24 +307,24 @@ var app = new Vue({
         },
 
         //toggle del menu che mostra l'opzione per cancellare un messaggio
-        toggleDrop(k){
+        toggleDrop(key){
             let currentChat = this.contacts[this.selectedContact].messages;
             for (const iterator of currentChat) {
-                if (iterator != k) {
+                if (iterator != key) {
                     iterator.dropD = false;
                 }
             }
-            (k.dropD == true) ? k.dropD = false : k.dropD = true;
+            (key.dropD == true) ? key.dropD = false : key.dropD = true;
 
         },
-        
+
         //funzione che permette di cancellare un messaggio
         deleteMsg(key){
             let currentChat = this.contacts[this.selectedContact].messages;
             let toDelete = currentChat.indexOf(key)
             currentChat.splice(toDelete, 1);
         },
-        
+
         //funzione che cambia tra dark e light mode
         toggleDarkMode(){
             if (this.darkMode == ""){
@@ -338,7 +338,7 @@ var app = new Vue({
                 this.lightDark = "Dark"
             }
         },
-        
+
         //funzione che fa lo scroll automatico sul fondo della chat, per mostrare sempre gli ultimi messaggi
         setBottomScroll(ms){
             setTimeout(() => {
@@ -346,12 +346,12 @@ var app = new Vue({
                 chatBox.scrollTop = chatBox.scrollHeight;
             }, ms);
         },
-        
+
         //display del field di aggiunta contatto
         displayAddContact(){
             (this.tabNuovoContatto.display == false) ? this.tabNuovoContatto.display = true : this.tabNuovoContatto.display = false;        
         },
-        
+
         //funzione che permette di aggiungere un nuovo contatto all'elenco
         addContact(){
             if (this.tabNuovoContatto.nome != "") {
@@ -369,10 +369,10 @@ var app = new Vue({
                 this.tabNuovoContatto.display = false;
             }
         },
-        
+
         //funzione che permette di eliminare un contatto dall'elenco
-        deleteContact(i){
-            this.contacts.splice(i, 1);
+        deleteContact(indice){
+            this.contacts.splice(indice, 1);
             this.selectedContact = 0;            
         }
     }
