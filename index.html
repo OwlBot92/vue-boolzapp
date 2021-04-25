@@ -34,7 +34,13 @@
                         <div class="right-nav-side">
                             <span id="toggle-dark-text" v-on:click="toggleDarkMode()">{{lightDark}} Theme <i class="fas fa-adjust"></i></span>
                             <i class="fas fa-comment-alt"></i>
-                            <i class="fas fa-ellipsis-v"></i>
+                            <div class="add-cont-container">
+                                <i class="fas fa-ellipsis-v" v-on:click="displayAddContact()"></i>
+                                <div class="add-contact-box" v-if="nuovoContatto.display" v-bind:class="resetDark">
+                                    <input class="input-contact-name" type="text" placeholder="Nome Contatto" v-model="nuovoContatto.nome" v-on:keyup.enter="addContact()">
+                                    <button class="btn-contact-name" v-on:click="addContact()">Add Contact</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- riga per disabilitare le notifiche -->

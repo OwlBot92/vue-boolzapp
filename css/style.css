@@ -88,6 +88,50 @@ body{
     font-weight: 600;
 }
 
+/* aggiungi nuovo contatto */
+.fa-ellipsis-v{
+    cursor: pointer;
+    position: relative;
+}
+.add-cont-container{
+    position: relative;
+}
+.add-contact-box{
+    top: 30px;
+    right: 10px;
+    box-shadow: 1px 2px 10px grey;
+    border-radius: 10px;
+    position: absolute;
+    background-color: white;
+    z-index: 9999;
+    padding: 10px;
+}
+.input-contact-name{
+    padding: 10px;
+    border-radius: 40px;
+    border: 1px solid grey;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+}
+.btn-contact-name{
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding: 10px;
+    margin: 10px auto;
+    margin-bottom: 5px;
+    cursor: pointer;
+    display: block;
+    color: grey;
+    font-weight: 600;
+    transition: .5s;
+    font-family: 'Roboto', sans-serif;
+}
+.btn-contact-name:hover{
+    background-color: #d5f9ba;
+}
+
+
 /* Notifications section linea 41 HTML */
 #disable-notifications{
     padding: 10px;

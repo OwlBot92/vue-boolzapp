@@ -7,6 +7,13 @@ var app = new Vue({
         selectedContact: 0,
         messaggio: "",
         searchTxt : "",
+        
+        //bottone nuovo contatto
+        nuovoContatto:{
+            display: false,
+            nome: "",
+        },
+
         contacts: [
             {
                 name: 'Michele',
@@ -205,18 +212,20 @@ var app = new Vue({
         },
         sendMsg(){
             let currentChat = this.contacts[this.selectedContact].messages;
-            currentChat.push(
-                {
-                    dropD: false,
-                    date: dayjs().format("DD/MM/YYYY HH:mm:ss"), // da sistemare con la data corrente
-                    hour: dayjs().format("HH:mm"),
-                    text: this.messaggio,
-                    status: "sent"
-                }
-            )
-            this.messaggio = "";
-            this.setBottomScroll(100);
-            this.replymsg();
+            if (this.messaggio != "") {
+                currentChat.push(
+                    {
+                        dropD: false,
+                        date: dayjs().format("DD/MM/YYYY HH:mm:ss"), // da sistemare con la data corrente
+                        hour: dayjs().format("HH:mm"),
+                        text: this.messaggio,
+                        status: "sent"
+                    }
+                )
+                this.messaggio = "";
+                this.setBottomScroll(100);
+                this.replymsg();
+            }
         },
         replymsg(){
             let currentChat = this.contacts[this.selectedContact].messages;
@@ -304,6 +313,27 @@ var app = new Vue({
                 let chatBox = document.getElementById("messages-box");
                 chatBox.scrollTop = chatBox.scrollHeight;
             }, ms);
+        },
+
+        //display del field di aggiunta contatto
+        displayAddContact(){
+            (this.nuovoContatto.display == false) ? this.nuovoContatto.display = true : this.nuovoContatto.display = false;        
+        },
+        addContact(){
+            if (this.nuovoContatto.nome != "") {
+
+                this.contacts.push(
+                {
+                    name : this.nuovoContatto.nome,
+                    avatar : "_0",
+                    visible : true,
+                    bg: "",
+                    messages : []
+                });
+                this.nuovoContatto.nome = "";
+            }
+
         }
+
     }
 });
