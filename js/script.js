@@ -14,6 +14,7 @@ var app = new Vue({
             nome: "",
         },
 
+        //lista contatti in rubrica
         contacts: [
             {
                 name: 'Michele',
@@ -211,11 +212,15 @@ var app = new Vue({
         ]
     },
 
+    //FUNZIONI 
     methods: {
+        //mostra la chat corrente
         showChat(indice){
             this.selectedContact = indice;
             this.contacts.forEach((value, i) => (i != indice) ? value.bg = "" : value.bg = "active-chat");
         },
+
+        //funzione che consente di inviare un messaggio e mostrarlo nella chat
         sendMsg(){
             let currentChat = this.contacts[this.selectedContact].messages;
             if (this.messaggio != "" && this.contacts[this.selectedContact].name != "") {
@@ -233,6 +238,8 @@ var app = new Vue({
                 this.replymsg();
             }
         },
+
+        //funzione di risposta automatica al messaggio inviato
         replymsg(){
             let currentChat = this.contacts[this.selectedContact].messages;
             setTimeout(() => {
@@ -248,6 +255,8 @@ var app = new Vue({
             }, 1500);
             this.setBottomScroll(1500);
         },
+
+        //funzione che permette di cercare un contatto 
         filterChat(){
             for (const obj of this.contacts){
                 if (obj.name != "") {
@@ -257,11 +266,15 @@ var app = new Vue({
                 }
             }
         },
+
+        //per avere un array di messaggi ricevuti ed evitare un errore se dovesse essere vuoto
+        //vedi v-if linea 94 HTML
         filterReceivedMessages(indice){
             let mes = this.contacts[indice].messages;
             let arrayReceived = mes.filter(item => item.status == "received");
             return arrayReceived;
         },
+        //funzione che prende informazioni riguardo l'ultimo messaggio della chat e...
         findLast(indice){
             let mes = this.contacts[indice].messages;
             let i = mes.length - 1;
@@ -273,14 +286,18 @@ var app = new Vue({
                 flag = true;
                 i--;
             }
+            //se c'è almeno un messaggio ed è troppo lungo ne mostra solo una parte 
             if (mes.length){
                 (lastMsgObj.text.length > 20) ? slicedText = `${lastMsgObj.text.slice(0, 17)}...` : slicedText = lastMsgObj.text;
                 return [lastMsgObj.hour, slicedText];
             }
+            //altrimenti restituisce stringhe vuote
             else{
                 return ["", slicedText];
             }
-        },
+        },   
+
+        //prende l'ultimo messaggio dei messaggi ricevuti nella chat corrispondente
         findLastReceived(indice) {
             let mes = this.contacts[indice].messages;
             let lastMsg = "";
@@ -288,6 +305,8 @@ var app = new Vue({
             lastMsg = arrayReceived[arrayReceived.length - 1]
             return lastMsg;
         },
+
+        //toggle del menu che mostra l'opzione per cancellare un messaggio
         toggleDrop(k){
             let currentChat = this.contacts[this.selectedContact].messages;
             for (const iterator of currentChat) {
@@ -298,12 +317,15 @@ var app = new Vue({
             (k.dropD == true) ? k.dropD = false : k.dropD = true;
 
         },
+        
+        //funzione che permette di cancellare un messaggio
         deleteMsg(key){
             let currentChat = this.contacts[this.selectedContact].messages;
             let toDelete = currentChat.indexOf(key)
             currentChat.splice(toDelete, 1);
         },
-
+        
+        //funzione che cambia tra dark e light mode
         toggleDarkMode(){
             if (this.darkMode == ""){
                 this.darkMode = "dark-mode"
@@ -316,17 +338,21 @@ var app = new Vue({
                 this.lightDark = "Dark"
             }
         },
+        
+        //funzione che fa lo scroll automatico sul fondo della chat, per mostrare sempre gli ultimi messaggi
         setBottomScroll(ms){
             setTimeout(() => {
                 let chatBox = document.getElementById("messages-box");
                 chatBox.scrollTop = chatBox.scrollHeight;
             }, ms);
         },
-
+        
         //display del field di aggiunta contatto
         displayAddContact(){
             (this.tabNuovoContatto.display == false) ? this.tabNuovoContatto.display = true : this.tabNuovoContatto.display = false;        
         },
+        
+        //funzione che permette di aggiungere un nuovo contatto all'elenco
         addContact(){
             if (this.tabNuovoContatto.nome != "") {
 
@@ -343,6 +369,8 @@ var app = new Vue({
                 this.tabNuovoContatto.display = false;
             }
         },
+        
+        //funzione che permette di eliminare un contatto dall'elenco
         deleteContact(i){
             this.contacts.splice(i, 1);
             this.selectedContact = 0;            
