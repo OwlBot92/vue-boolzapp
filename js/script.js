@@ -331,6 +331,7 @@ var app = new Vue({
                     messages : []
                 });
                 this.nuovoContatto.nome = "";
+                this.nuovoContatto.display = false;
             }
 
         }
