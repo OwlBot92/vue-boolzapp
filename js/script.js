@@ -9,7 +9,7 @@ var app = new Vue({
         searchTxt : "",
         
         //bottone nuovo contatto
-        nuovoContatto:{
+        tabNuovoContatto:{
             display: false,
             nome: "",
         },
@@ -201,6 +201,12 @@ var app = new Vue({
                         status: 'received'
                     }
                 ],
+            },
+            {
+                name: "",
+                avatar: "_0",
+                visible: false,
+                messages: []
             }
         ]
     },
@@ -212,7 +218,7 @@ var app = new Vue({
         },
         sendMsg(){
             let currentChat = this.contacts[this.selectedContact].messages;
-            if (this.messaggio != "") {
+            if (this.messaggio != "" && this.contacts[this.selectedContact].name != "") {
                 currentChat.push(
                     {
                         dropD: false,
@@ -317,24 +323,29 @@ var app = new Vue({
 
         //display del field di aggiunta contatto
         displayAddContact(){
-            (this.nuovoContatto.display == false) ? this.nuovoContatto.display = true : this.nuovoContatto.display = false;        
+            (this.tabNuovoContatto.display == false) ? this.tabNuovoContatto.display = true : this.tabNuovoContatto.display = false;        
         },
         addContact(){
-            if (this.nuovoContatto.nome != "") {
+            if (this.tabNuovoContatto.nome != "") {
 
-                this.contacts.push(
-                {
-                    name : this.nuovoContatto.nome,
-                    avatar : "_0",
-                    visible : true,
-                    bg: "",
-                    messages : []
-                });
-                this.nuovoContatto.nome = "";
-                this.nuovoContatto.display = false;
+                this.contacts.splice(this.contacts.length-1,0,
+                    {
+                        name: this.tabNuovoContatto.nome,
+                        avatar: "_0",
+                        visible: true,
+                        bg: "",
+                        messages: []
+                    }
+                );
+                this.tabNuovoContatto.nome = "";
+                this.tabNuovoContatto.display = false;
             }
-
+        },
+        deleteContact(i){
+            console.log(i);
+            this.contacts.splice(i, 1);
+            this.selectedContact = 0;
+            console.log(this.contacts);               
         }
-
     }
 });

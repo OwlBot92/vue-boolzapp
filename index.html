@@ -36,8 +36,8 @@
                             <i class="fas fa-comment-alt"></i>
                             <div class="add-cont-container">
                                 <i class="fas fa-ellipsis-v" v-on:click="displayAddContact()"></i>
-                                <div class="add-contact-box" v-if="nuovoContatto.display" v-bind:class="resetDark">
-                                    <input class="input-contact-name" type="text" placeholder="Nome Contatto" v-model="nuovoContatto.nome" v-on:keyup.enter="addContact()">
+                                <div class="add-contact-box" v-if="tabNuovoContatto.display" v-bind:class="resetDark">
+                                    <input class="input-contact-name" type="text" placeholder="Nome Contatto" v-model="tabNuovoContatto.nome" v-on:keyup.enter="addContact()">
                                     <button class="btn-contact-name" v-on:click="addContact()">Add Contact</button>
                                 </div>
                             </div>
@@ -71,7 +71,10 @@
                                         <span class="contact-name">{{obj.name}}</span>
                                         <span class="last-msg-date">{{ findLast(index)[0] }}</span>
                                     </div>
-                                    <span class="last-msg">{{ findLast(index)[1] }}</span>
+                                    <div class="bot-row">
+                                        <span class="last-msg">{{ findLast(index)[1] }}</span>
+                                        <i class="fas fa-times" v-on:click="deleteContact(index)"></i>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
@@ -89,7 +92,6 @@
                             <div class="contact-chat-info">
                                 <span id="nome-contatto-chat">{{ contacts[selectedContact].name }}</span>
                                 <span id="ultimo-accesso">ultimo accesso alle: <span v-if="filterReceivedMessages(selectedContact).length">{{findLastReceived(selectedContact).hour}}</span><span v-else>N/A</span></span>
-        
                             </div>
                         </div>
                         <div class="right-nav-side">

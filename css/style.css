@@ -215,7 +215,18 @@ body{
     font-size: 14px;
     border-bottom: 1px solid rgb(231, 231, 231);
 }
+.bot-row .fa-times{
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+}
+.contact-name-msg:hover .fa-times{
+    display: block;
+}
 .contact-name-msg{
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
