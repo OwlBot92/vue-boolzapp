@@ -250,9 +250,11 @@ var app = new Vue({
         },
         filterChat(){
             for (const obj of this.contacts){
-                let lowerTxt = obj.name.toLowerCase();
-                let lowerInput = this.searchTxt.toLowerCase();
-                (lowerTxt.includes(lowerInput)) ? obj.visible = true : obj.visible = false;
+                if (obj.name != "") {
+                    let lowerTxt = obj.name.toLowerCase();
+                    let lowerInput = this.searchTxt.toLowerCase();
+                    (lowerTxt.includes(lowerInput)) ? obj.visible = true : obj.visible = false;
+                }
             }
         },
         filterReceivedMessages(indice){
