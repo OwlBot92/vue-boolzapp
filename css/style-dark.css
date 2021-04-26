@@ -8,16 +8,12 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+/* versione della dark mode temporanea, ottenuta solo invertendo i colori con filter */
 
 /* Root linea 21 HTML */
 #root{
     height: 100vh;
-    background: rgb(206,215,216);
-    background: linear-gradient(360deg, 
-    rgba(206,215,216,1) 5%, 
-    rgba(208,216,217,1) 15%, 
-    rgba(220,219,210,1) 90%, 
-    rgba(0,150,136,1) 75%);
+    background: #090e11;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -39,7 +35,7 @@ body{
     width: 90%;
     min-width: 800px;
     max-width: 1400px;
-    background-color: rgb(247, 247, 247);
+    background: #090e11;
     display: flex;
 }
 
@@ -57,7 +53,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #eaeaea;
+    background-color: #2a2f32;
+    color: white;
     padding: 5px;
 }
 .left-nav-side{
@@ -72,7 +69,7 @@ body{
 .right-nav-side .fas{
     margin-right: 15px;
     font-size: 14px;
-    color: #aaa;
+    color: #b1b3b5;
 }
 .nav-icon{
     border-radius: 50%;
@@ -102,7 +99,8 @@ body{
     box-shadow: 1px 2px 10px grey;
     border-radius: 5px;
     position: absolute;
-    background-color: white;
+    background-color: #2a2f32;
+    color: white;
     z-index: 9999;
     padding: 20px 10px;
 }
@@ -114,12 +112,14 @@ body{
     padding: 10px;
     font-size: 16px;
     text-decoration: none;
-    color: black;
+    color: white;
 }
 #disconnect-redirect:hover{
     color: #009688;
 }
 .input-contact-name{
+    background-color: #2a2f32;
+    color: white;
     font-size: 16px;
     padding: 10px;
     border: none;
@@ -141,15 +141,14 @@ body{
     transition: .5s;
     font-family: 'Roboto', sans-serif;
 }
-.btn-contact-name:hover{
-    background-color: #d5f9ba;
-}
+/* #2d3134 */
 
 
 /* Notifications section linea 41 HTML */
 #disable-notifications{
     padding: 10px;
-    background-color: #8edbf8;
+    color: white;
+    background-color: #085373;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -162,10 +161,10 @@ body{
     height: 35px;
     width: 35px;
     margin-right: 10px;
-    background-color: white;
+    background-color: #8eb2be;
 }
 .fa-bell-slash{
-    color: #8edbf8;
+    color: #085373;
 }
 .notifications-txt{
     display: flex;
@@ -177,17 +176,19 @@ body{
 }
 .notifications-txt :last-child{
     text-decoration: underline;
-    color: grey;
+    color: #a9c1cb;
 }
 
 
 /* field di ricerca tra i contatti */
 .input-box{
     position: relative;
-    background-color: #d8d8d7;
+    background-color: #131c21;
     padding: 5px;
 }
 #contact-search{
+    background-color: #323739;
+    color: white;
     font-family: 'Roboto', sans-serif;
     outline: none;
     border: none;
@@ -200,7 +201,7 @@ body{
 .input-box .fa-search{
     position: absolute;
     font-size: 13px;
-    color: #aaa;
+    color: #828689;
     left: 5%;
     top: 50%;
     transform: translateY(-50%);
@@ -212,7 +213,8 @@ body{
     width: 100%;
     height: calc(100% - 150px);
     overflow-y: auto;
-    background-color: white;
+    background-color: #131c21;
+    color: white;
 }
 .contact-box img{
     height: 50px;
@@ -227,7 +229,7 @@ body{
     padding: 10px;
     list-style: none;
     font-size: 14px;
-    border-bottom: 1px solid rgb(231, 231, 231);
+    border-bottom: 1px solid #2d3134;
 }
 .bot-row .fa-times{
     display: none;
@@ -269,7 +271,7 @@ body{
     font-size: 11px;
 }
 .active-chat{
-    background-color: #cacaca;
+    background-color: #2d3134;
 }
 
 
@@ -285,7 +287,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #eaeaea;
+    background-color: #2a2f32;
+    color: white;
     padding: 5px;
 }
 
@@ -299,7 +302,7 @@ body{
 }
 #ultimo-accesso{
     font-size: 11px;
-    color: grey;
+    color: #9a9c9f;
 }
 
 
@@ -310,7 +313,7 @@ body{
     width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
-    background-image: url("../img/mine.jpg");
+    background-image: url("../img/dark-mine.jpg");
 
 }
 
@@ -318,12 +321,16 @@ body{
 
 .received{
     left: 5%;
-    background-color: rgb(245, 245, 245);
+    
+    color: white;
+    background-color: #262e32;
 }
 .sent{
+    color: white;
+
     margin: 5px;
     left: 62%;
-    background-color: #d5f9ba;
+    background-color: #056162;
 }
 
 .sent,
@@ -339,12 +346,13 @@ body{
     font-size: 14px;
 }
 .chat-data{
-    color: rgb(121, 121, 121);
+    color: #79a8aa;
     position: absolute;
-    font-size: 9.5px;
+    font-size: 11px;
     bottom: 4px;
     right: 25px;
 }
+/* da regolare la distanza dell'ora personalizzata sui messaggi ricevuti */
 .sent-check{
     position: absolute;
     bottom: 3px;
@@ -358,7 +366,7 @@ body{
 
 
 .send-msg{
-    background-color:#f2eeea;
+    background-color:#1e2428;
     padding: 8px;
     display: flex;
     align-items: center;
@@ -369,6 +377,7 @@ body{
     cursor: pointer;
 }
 .send-msg input{
+    background-color: #33383b;
     border: none;
     outline: none;
     padding: 10px 15px;
@@ -388,8 +397,8 @@ body{
 }
 
 .dropdown{
-    background-color: white;
-    box-shadow: 1px 2px 10px grey;
+    background-color: #2a2f32;
+    box-shadow: 1px 2px 9px rgb(78, 95, 97);
     padding: 0 10px;
     position: absolute;
     right: 0;
@@ -410,7 +419,7 @@ body{
     display: inline-block;
     height: 100%;
     width: 0%;
-    background-color: #e5ddd5;
+    background-color: #0d1418;
     overflow: hidden;
 }
 .contact-info{
@@ -438,23 +447,25 @@ body{
 }
 /* inizio styling componenti interni info contatto */
 .side-info{
-    border-left: 1px solid lightgrey;
+    border-left: 1px solid #3f4448;
     display: flex;
     align-items: center;
     width: 100%;
-    background-color: #ededed;
+    color: white;
+    background-color: #2a2f32;
 }
 .side-info i{
     margin-right: 25px;
     font-size: 20px;
-    color: grey;
+    color: #828689;
     cursor: pointer;
 }
 
 /* immagine e nome utente */
 .side-contact-infos{
     padding: 20px;
-    background-color: white;
+    background-color:#131c21;
+    color: white;
     display: flex;
     flex-direction: column;
 }
@@ -473,7 +484,7 @@ body{
     width: 100%;
     margin-top: 10px;
     padding: 20px;
-    background-color: white;
+    background-color: #131c21;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -488,7 +499,8 @@ body{
 
 /* messages options */
 .side-msg-options{
-    background-color: white;
+    background-color: #131c21;
+    color: white;
     margin-top: 10px;
     padding: 10px 20px;
 }
@@ -510,7 +522,8 @@ body{
 .side-contact-number-status{
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: #131c21;
+    color: white;
     margin-top: 10px;
     padding: 10px 20px;
 }
@@ -537,7 +550,8 @@ body{
     cursor: pointer;
     margin-top: 10px;
     padding: 20px 20px;
-    background-color: white;
+    background-color: #131c21;
+    color: white;
     display: flex;
     align-content: center;
 }
@@ -550,16 +564,13 @@ body{
     margin-bottom: 40px;
 }
 .red-icon{
-    color: red;
+    color: #ef697a;
     font-size: 20px;
     padding-right: 15px;
 }
-
 .shadow{
-    box-shadow: 1px 1px 3px rgb(133, 133, 133);
+    box-shadow: none;
 }
-
-
 
 
 
@@ -598,7 +609,7 @@ body{
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #e5ddd5; 
+    background: #0d1418; 
 }
  
 /* Handle */

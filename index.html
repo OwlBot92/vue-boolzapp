@@ -11,14 +11,16 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
             integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
             crossorigin="anonymous" />
+        
         <link rel="stylesheet" href="css/style.css">
+        <link id="darkID" rel="stylesheet" href="">
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
         <title>Boolzapp</title>
     </head>
 
     <body>
 
-        <div id="root" v-bind:class="darkMode">
+        <div id="root">
             <!-- <div class="green-bg"></div> -->
             
             <!-- absolute window -->
@@ -28,7 +30,7 @@
                     <!-- user ROW -->
                     <div id="user-pseudo-nav">
                         <div class="left-nav-side">
-                            <img class="nav-icon" src="img/avatar_8.jpg" alt="" v-bind:class="resetDark">
+                            <img class="nav-icon" src="img/avatar_8.jpg" alt="">
                             <span id="user-name">Nico</span>
                         </div>
                         <div class="right-nav-side">
@@ -36,7 +38,7 @@
                             <i class="fas fa-comment-alt"></i>
                             <div class="add-cont-container">
                                 <i class="fas fa-ellipsis-v" v-on:click="displayAddContact()"></i>
-                                <div class="add-contact-box" v-if="tabNuovoContatto.display" v-bind:class="resetDark">
+                                <div class="add-contact-box" v-if="tabNuovoContatto.display">
                                     <input class="input-contact-name" type="text" placeholder="Aggiungi Contatto" v-model="tabNuovoContatto.nome" v-on:keyup.enter="addContact()">
                                     <span>Impostazioni</span>
                                     <a id="disconnect-redirect" href="disconnect-html/disconnected.html">Disconnetti</a>
@@ -65,7 +67,7 @@
                         <ul>
                             <!-- temp LI di prova -->
                             <li v-for="(obj, index) in contacts" v-on:click="showChat(index)" v-bind:class="obj.bg" v-if="obj.visible">
-                                <img v-bind:src="`img/avatar${obj.avatar}.jpg`" v-bind:class="resetDark" alt="">
+                                <img v-bind:src="`img/avatar${obj.avatar}.jpg`" alt="">
                                 
                                 <div class="contact-name-msg">
                                     <div class="li-name-date">
@@ -88,7 +90,7 @@
                     <!-- pseudo chat nav -->
                     <div id="chat-pseudo-nav">
                         <div class="left-nav-side" v-on:click="openInfoContact()">
-                            <img class="nav-icon" v-bind:src="`img/avatar${contacts[selectedContact].avatar}.jpg`" v-bind:class="resetDark" alt="">
+                            <img class="nav-icon" v-bind:src="`img/avatar${contacts[selectedContact].avatar}.jpg`" alt="">
 
                             <div class="contact-chat-info">
                                 <span id="nome-contatto-chat">{{ contacts[selectedContact].name }}</span>
@@ -114,7 +116,7 @@
 
                                 <i class="fas fa-chevron-down" v-on:click="toggleDrop(key)"></i>
                                 
-                                <div class="dropdown" v-if="key.dropD" v-bind:class="resetDark">
+                                <div class="dropdown" v-if="key.dropD">
                                     <span class="msg-options">Message Info</span>
                                     <span class="msg-options" v-on:click="deleteMsg(key)">Delete</span>
                                 </div>
@@ -142,7 +144,7 @@
                         <div class="contact-info">
                             <!-- immagine e nome contatto -->
                             <div class="side-contact-infos shadow">
-                                <img class="info-img" v-bind:src="`img/avatar${contacts[selectedContact].avatar}.jpg`" v-bind:class="resetDark"alt="">
+                                <img class="info-img" v-bind:src="`img/avatar${contacts[selectedContact].avatar}.jpg`"alt="">
                                 <span class="info-nome-contatto">{{contacts[selectedContact].name}}</span>
                             </div>
                             

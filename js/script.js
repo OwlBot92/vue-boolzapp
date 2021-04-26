@@ -3,8 +3,6 @@ var app = new Vue({
     data: {
         classShowInfo: "hide-class",
         lightDark: "Dark",
-        darkMode: "",
-        resetDark : "",
         selectedContact: 0,
         messaggio: "",
         searchTxt : "",
@@ -366,18 +364,16 @@ var app = new Vue({
 
         //funzione che cambia tra dark e light mode
         toggleDarkMode(){
-            if (this.darkMode == ""){
-                this.darkMode = "dark-mode"
-                this.resetDark = "reset-dark";
-                this.lightDark = "Light"
+            let dark = document.getElementById("darkID");
+            if (!dark.href.includes("dark")) {
+                dark.setAttribute("href", "css/style-dark.css");
+                this.lightDark = "Light";
             }
             else{
-                this.darkMode = "";
-                this.resetDark = "";
-                this.lightDark = "Dark"
+                dark.setAttribute("href", "")
+                this.lightDark = "Dark";
             }
         },
-
         //funzione che fa lo scroll automatico sul fondo della chat, per mostrare sempre gli ultimi messaggi
         setBottomScroll(ms){
             setTimeout(() => {
