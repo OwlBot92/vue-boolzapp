@@ -8,6 +8,7 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+/* versione della dark mode temporanea, ottenuta solo invertendo i colori con filter */
 .dark-mode{
     filter: invert(.9);
 }
