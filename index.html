@@ -37,8 +37,9 @@
                             <div class="add-cont-container">
                                 <i class="fas fa-ellipsis-v" v-on:click="displayAddContact()"></i>
                                 <div class="add-contact-box" v-if="tabNuovoContatto.display" v-bind:class="resetDark">
-                                    <input class="input-contact-name" type="text" placeholder="Nome Contatto" v-model="tabNuovoContatto.nome" v-on:keyup.enter="addContact()">
-                                    <button class="btn-contact-name" v-on:click="addContact()">Add Contact</button>
+                                    <input class="input-contact-name" type="text" placeholder="Aggiungi Contatto" v-model="tabNuovoContatto.nome" v-on:keyup.enter="addContact()">
+                                    <span>Impostazioni</span>
+                                    <span>Disconnetti</span>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +87,7 @@
                 <div class="chat-column">
                     <!-- pseudo chat nav -->
                     <div id="chat-pseudo-nav">
-                        <div class="left-nav-side">
+                        <div class="left-nav-side" v-on:click="openInfoContact()">
                             <img class="nav-icon" v-bind:src="`img/avatar${contacts[selectedContact].avatar}.jpg`" v-bind:class="resetDark" alt="">
 
                             <div class="contact-chat-info">
@@ -97,7 +98,7 @@
                         <div class="right-nav-side">
                             <i class="fas fa-search"></i>
                             <i class="fas fa-paperclip"></i>
-                            <i class="fas fa-ellipsis-v"></i>
+                            <i id="info-ellipses" v-on:click="showInfoContact()" class="fas fa-ellipsis-v"></i>
                         </div>
                     </div>
 
@@ -106,7 +107,11 @@
                         <div v-for="key in contacts[selectedContact].messages">
                             <div v-bind:class="key.status">
                                 <span>{{ key.text }}</span>
-                                <span class="chat-data">{{ key.date }}</span>
+                                <span class="chat-data">{{ key.hour }}</span>
+                                <span class="sent-check" v-if="key.status == 'sent' && key.doubleCheck == 'oneGrey'"><i class="fas fa-check"></i></span>
+                                <span class="sent-check" v-if="key.status == 'sent' && key.doubleCheck == 'doubleGrey'"><i class="fas fa-check-double"></i></span>
+                                <span class="sent-check blue-check" v-if="key.status=='sent' && key.doubleCheck == 'blue'"><i class="fas fa-check-double"></i></span>
+
                                 <i class="fas fa-chevron-down" v-on:click="toggleDrop(key)"></i>
                                 
                                 <div class="dropdown" v-if="key.dropD" v-bind:class="resetDark">
@@ -121,6 +126,71 @@
                         <i class="far fa-smile"></i>
                         <input type="text" placeholder="Scrivi un messaggio" v-model="messaggio" v-on:keyup.enter="sendMsg()">
                         <i class="fas fa-microphone"></i>
+                    </div>
+                </div>
+                
+
+                <!-- SCORRE DAL LATO DELLA PAGINA -->
+                <!-- blocco laterale info contatto -->
+                <div class="wrapper" v-bind:class="classShowInfo">
+                    <!-- tasto per chiudere la finestra e titolo -->
+                    <div class="side-info pad">
+                        <i class="fas fa-times" v-on:click="closeInfoContact()"></i>
+                        <span>Info Contatto</span>
+                    </div>
+                    <div class="wrap-overflow">
+                        <div class="contact-info">
+                            <!-- immagine e nome contatto -->
+                            <div class="side-contact-infos shadow">
+                                <img class="info-img" v-bind:src="`img/avatar${contacts[selectedContact].avatar}.jpg`" v-bind:class="resetDark"alt="">
+                                <span class="info-nome-contatto">{{contacts[selectedContact].name}}</span>
+                            </div>
+                            
+                            <!-- media link docs -->
+                            <div class="side-media shadow">
+                            
+                                <span>Media, link e documenti</span>
+                                <span><i class="fas fa-chevron-right"></i></span>
+                                
+                            </div>
+                            
+                            <!-- opzioni messaggi e notifiche contatto -->
+                            <div class="side-msg-options shadow">
+                                <div id="disable-msg">
+                                    <span>Disattiva notifiche</span>
+                                    <span><i class="far fa-square"></i></span>
+                                </div>
+                                <div id="important-msg">
+                                    <span>Messaggi importanti</span>
+                                    <span><i class="fas fa-chevron-right"></i></span>
+                                </div>
+                                <div id="useless-msg">
+                                    <span>Messaggi effimeri</span>
+                                    <span><i class="fas fa-chevron-right"></i></span>
+                                </div>
+                            </div>
+                            <!-- stato e numeri di telefono -->
+                            <div class="side-contact-number-status shadow">
+                                <span id="side-number-title">Info e numero di telefono</span>
+                                <span id="side-number-status">Hello there, I am using Boolzapp</span>
+                                <span id="side-number-number">000111222333</span>
+                            </div>
+                            <!-- opzioni chat contatto -->
+                        
+                            <div id="block-contact" class="shadow">
+                                <i class="fas fa-ban red-icon"></i>
+                                <span>Blocca</span>
+                            </div>
+                            <div id="report-contact" class="shadow">
+                                <i class="fas fa-thumbs-down red-icon"></i>
+                                <span>Segnala Contatto</span>
+                            </div>
+                            <div id="delete-chat" class="shadow" v-on:click="deleteContact(selectedContact)">
+                                <i class="fas fa-trash red-icon"></i>
+                                <span>Elimina Chat</span>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
 

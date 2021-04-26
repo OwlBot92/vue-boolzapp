@@ -67,6 +67,9 @@ body{
     background-color: #eaeaea;
     padding: 5px;
 }
+.left-nav-side{
+    cursor: pointer;
+}
 .left-nav-side,
 .right-nav-side{
     display: flex;
@@ -98,19 +101,27 @@ body{
     position: relative;
 }
 .add-contact-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     top: 30px;
     right: 10px;
     box-shadow: 1px 2px 10px grey;
-    border-radius: 10px;
+    border-radius: 5px;
     position: absolute;
     background-color: white;
     z-index: 9999;
+    padding: 20px 10px;
+}
+.add-contact-box > span{
     padding: 10px;
+    font-size: 16px;
 }
 .input-contact-name{
+    font-size: 16px;
     padding: 10px;
-    border-radius: 40px;
-    border: 1px solid grey;
+    border: none;
+    border-bottom: 1px solid #009688;
     outline: none;
     font-family: 'Roboto', sans-serif;
 }
@@ -329,8 +340,18 @@ body{
     color: rgb(121, 121, 121);
     position: absolute;
     font-size: 9.5px;
+    bottom: 4px;
+    right: 25px;
+}
+.sent-check{
+    position: absolute;
     bottom: 3px;
-    right: 5%;
+    right: 10px;
+    font-size: 10px;
+    color: grey;
+}
+.blue-check{
+    color: rgb(0, 153, 255);
 }
 
 
@@ -381,6 +402,181 @@ body{
     padding: 10px;
     cursor: pointer;
 }
+
+/* TAB info contatto */
+.wrapper{
+    display: inline-block;
+    height: 100%;
+    width: 0%;
+    background-color: #e5ddd5;
+    overflow: hidden;
+}
+.contact-info{
+    display: inline-block;
+    width: 100%;
+    white-space:nowrap;
+}
+.show-class{
+    transition: width .250s ease-in-out;
+    width:35%;
+    border-left: 1px solid grey;
+}
+.hide-class{
+    padding: 0;
+    transition: width .100s ease-in-out;
+    width:0%;
+    padding: 0;
+}
+.wrap-overflow{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: calc(100% - 50px); /* da rivedere il CALC */
+}
+.pad{
+    padding: 15px;
+}
+/* inizio styling componenti interni info contatto */
+.side-info{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #ededed;
+}
+.side-info i{
+    margin-right: 25px;
+    font-size: 20px;
+    color: grey;
+    cursor: pointer;
+}
+
+/* immagine e nome utente */
+.side-contact-infos{
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+.side-contact-infos .info-img{
+    width: 200px;
+    border-radius: 50%;
+    align-self: center;
+}
+.side-contact-infos .info-nome-contatto{
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+/* media link e documenti */
+.side-media{
+    width: 100%;
+    margin-top: 10px;
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.side-media span:first-child{
+    color: #2ba89c;
+    font-size: 14px;
+}
+.side-media span:last-child{
+    color: grey;
+}
+
+/* messages options */
+.side-msg-options{
+    background-color: white;
+    margin-top: 10px;
+    padding: 10px 20px;
+}
+#disable-msg,
+#important-msg,
+#useless-msg{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+#disable-msg,
+#important-msg{
+    border-bottom: 1px solid lightgrey;
+}
+
+/* numero di telefono e stato */
+.side-contact-number-status{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin-top: 10px;
+    padding: 10px 20px;
+}
+#side-number-title{
+    color: #2ba89c;
+    font-size: 14px;
+}
+
+#side-number-title,
+#side-number-status,
+#side-number-number{
+    padding: 20px 0;
+}
+#side-number-status{
+    border-bottom: 1px solid lightgrey;
+}
+
+/* bottoni Finali del blocco delle info contatto */
+
+
+#block-contact,
+#report-contact,
+#delete-chat{
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 20px 20px;
+    background-color: white;
+    display: flex;
+    align-content: center;
+}
+#block-contact:hover,
+#report-contact:hover,
+#delete-chat:hover{
+    background-color: #f5f5f5;
+}
+#delete-chat{
+    margin-bottom: 40px;
+}
+.red-icon{
+    color: red;
+    font-size: 20px;
+    padding-right: 15px;
+}
+
+.shadow{
+    box-shadow: 1px 1px 3px rgb(133, 133, 133);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

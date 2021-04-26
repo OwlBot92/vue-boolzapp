@@ -1,6 +1,7 @@
 var app = new Vue({
     el: "#root",
     data: {
+        classShowInfo: "hide-class",
         lightDark: "Dark",
         darkMode: "",
         resetDark : "",
@@ -27,14 +28,16 @@ var app = new Vue({
                         date: '10/01/2020 15:30:55',
                         hour: '15:30',
                         text: 'Hai portato a spasso il cane?',
-                        status: 'sent'
+                        status: 'sent',
+                        doubleCheck: "blue"
                     },
                     {
                         dropD: false,
                         date: '10/01/2020 15:50:00',
                         hour: '15:50',
                         text: 'Ricordati di dargli da mangiare',
-                        status: 'sent'
+                        status: 'sent',
+                        doubleCheck: "blue"
                     },
                     {
                         dropD: false,
@@ -56,7 +59,8 @@ var app = new Vue({
                         date: '20/03/2020 16:30:00',
                         hour: '16:30',
                         text: 'Ciao come stai?',
-                        status: 'sent'
+                        status: 'sent',
+                        doubleCheck: "blue"
                     },
                     {
                         dropD: false,
@@ -70,7 +74,8 @@ var app = new Vue({
                         date: '20/03/2020 16:35:00',
                         hour: '16:35',
                         text: 'Mi piacerebbe ma devo andare a fare la spesa.',
-                        status: 'sent'
+                        status: 'sent',
+                        doubleCheck: "blue"
                     }
                 ],
             },
@@ -92,7 +97,8 @@ var app = new Vue({
                         date: '28/03/2020 10:20:10',
                         hour: '10:20',
                         text: 'Sicuro di non aver sbagliato chat?',
-                        status: 'sent'
+                        status: 'sent',
+                        doubleCheck: "blue"
                     },
                     {
                         dropD: false,
@@ -113,7 +119,8 @@ var app = new Vue({
                         date: '10/01/2020 15:30:55',
                         hour: '15:30',
                         text: 'Lo sai che ha aperto una nuova pizzeria?',
-                        status: 'sent'
+                        status: 'sent',
+                        doubleCheck: "blue"
                     },
                     {
                         dropD: false,
@@ -135,7 +142,8 @@ var app = new Vue({
                         date: '20/03/2020 16:30:00',
                         hour: '16:30',
                         text: 'Pranzato?',
-                        status: 'sent'
+                        status: 'sent',
+                        doubleCheck: "blue"
                     },
                     {
                         dropD: false,
@@ -149,7 +157,8 @@ var app = new Vue({
                         date: '20/03/2020 16:35:00',
                         hour: '16:30',
                         text: 'No, ci vediamo tra 20 minuti',
-                        status: 'sent'
+                        status: 'sent',
+                        doubleCheck: "blue"
                     }
                 ],
             },
@@ -171,7 +180,8 @@ var app = new Vue({
                         date: '28/03/2020 10:20:10',
                         hour: '10:20',
                         text: 'Sicuro di non aver sbagliato chat?',
-                        status: 'sent'
+                        status: 'sent',
+                        doubleCheck: "blue"
                     },
                     {
                         dropD: false,
@@ -192,7 +202,8 @@ var app = new Vue({
                         date: '10/01/2020 15:30:55',
                         hour: '15:30',
                         text: 'Lo sai che ha aperto una nuova pizzeria?',
-                        status: 'sent'
+                        status: 'sent',
+                        doubleCheck: "blue"
                     },
                     {
                         dropD: false,
@@ -216,8 +227,30 @@ var app = new Vue({
     methods: {
         //mostra la chat corrente
         showChat(indice){
+            this.messaggio = "";
+            this.setBottomScroll(0);
             this.selectedContact = indice;
             this.contacts.forEach((value, i) => (i != indice) ? value.bg = "" : value.bg = "active-chat");
+        },
+
+        //cambia lo stato delle spunte tra singole / doppie / azzurre
+        updateChecks(array) {
+            let last = array.length-1;
+            setTimeout(() => {
+                array[last].doubleCheck = "doubleGrey";
+            }, 1000);
+            setTimeout(() => {
+                array[last].doubleCheck = "blue";
+            }, 2000);
+        },
+
+        // porta la chat dell ultimo messaggio inviato in cima alla lista
+        moveInArray(arr, fromIndex, toIndex, ms) {
+            setTimeout(() => {
+                var element = arr[fromIndex];
+                arr.splice(fromIndex, 1);
+                arr.splice(toIndex, 0, element);
+            }, ms)
         },
 
         //funzione che consente di inviare un messaggio e mostrarlo nella chat
@@ -230,18 +263,23 @@ var app = new Vue({
                         date: dayjs().format("DD/MM/YYYY HH:mm:ss"), // da sistemare con la data corrente
                         hour: dayjs().format("HH:mm"),
                         text: this.messaggio,
-                        status: "sent"
+                        status: "sent",
+                        doubleCheck: "oneGrey"
                     }
                 )
+                this.updateChecks(currentChat);
                 this.messaggio = "";
                 this.setBottomScroll(100);
+                this.moveInArray(this.contacts, this.selectedContact, 0, 0)
                 this.replymsg();
+                this.selectedContact = 0;
             }
         },
 
         //funzione di risposta automatica al messaggio inviato
         replymsg(){
             let currentChat = this.contacts[this.selectedContact].messages;
+            let current = this.selectedContact;
             setTimeout(() => {
                 currentChat.push(
                     {
@@ -252,8 +290,8 @@ var app = new Vue({
                         status: "received"
                     }
                 )
-            }, 1500);
-            this.setBottomScroll(1500);
+            }, 3000);
+            this.setBottomScroll(3000);
         },
 
         //funzione che permette di cercare un contatto 
@@ -274,6 +312,7 @@ var app = new Vue({
             let arrayReceived = mes.filter(item => item.status == "received");
             return arrayReceived;
         },
+
         //funzione che prende informazioni riguardo l'ultimo messaggio della chat e...
         findLast(indice){
             let mes = this.contacts[indice].messages;
@@ -372,8 +411,20 @@ var app = new Vue({
 
         //funzione che permette di eliminare un contatto dall'elenco
         deleteContact(indice){
-            this.contacts.splice(indice, 1);
-            this.selectedContact = 0;            
+            if (this.contacts[indice].name != "") {
+                this.contacts.splice(indice, 1);
+                this.selectedContact = 0;            
+            }
+        },
+
+        showInfoContact(){
+            (this.classShowInfo == "hide-class") ? this.classShowInfo = "show-class" : this.classShowInfo = "hide-class"; 
+        },
+        closeInfoContact(){
+            this.classShowInfo = "hide-class";
+        },
+        openInfoContact(){
+            this.classShowInfo = "show-class";
         }
     }
 });
