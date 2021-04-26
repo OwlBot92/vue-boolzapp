@@ -117,6 +117,15 @@ body{
     padding: 10px;
     font-size: 16px;
 }
+#disconnect-redirect{
+    padding: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    color: black;
+}
+#disconnect-redirect:hover{
+    color: #009688;
+}
 .input-contact-name{
     font-size: 16px;
     padding: 10px;
@@ -419,7 +428,6 @@ body{
 .show-class{
     transition: width .250s ease-in-out;
     width:35%;
-    border-left: 1px solid grey;
 }
 .hide-class{
     padding: 0;
@@ -437,6 +445,7 @@ body{
 }
 /* inizio styling componenti interni info contatto */
 .side-info{
+    border-left: 1px solid lightgrey;
     display: flex;
     align-items: center;
     width: 100%;
@@ -562,6 +571,7 @@ body{
 
 
 
+/* implementare animazioni freccia di ricerca chat */
 
 
 
@@ -574,8 +584,13 @@ body{
 
 
 
-
-
+@media screen and (max-width: 1450px){
+    #main-window{
+        height: 100vh;
+        width: 100%;
+        max-width: 1550px;
+    }
+}
 
 
 
@@ -585,21 +600,20 @@ body{
 /* SCROLLBAR STYLING */
 /* width */
 ::-webkit-scrollbar {
-  width: 8px;
+    width: 6px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #e5ddd5; 
+    background: #e5ddd5; 
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
-  border-radius: 4px;
+    background: rgba(136, 136, 136, 30%); 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+    background: rgb(145, 145, 145); 
 }

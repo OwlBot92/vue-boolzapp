@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.wrapper{
+    padding-bottom: 70px;
+    background-color: black;
+}
+header{
+    background-color: #00bfa5;
+    padding-top: 30px;
+    padding-bottom: 150px;
+    padding-left: 100px;
+}
+main{
+    padding: 80px 80px;
+    background-color: white;
+    width: 80%;
+
+    display: block;
+    margin: auto;
+    position: relative;
+    top: -100px;
+    display: flex;
+    flex-direction: column;
+}
+main h1{
+    font-weight: 300;
+    padding-bottom: 30px;
+}
+
+.upper-landing{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 120px;
+}
+.upper-landing ol{
+    padding: 0 0 0 20px;
+}
+ol li{
+    padding: 15px;
+}
+
+.upper-landing input{
+    margin-right: 5px;
+}
+.upper-left a{
+    text-decoration: none;
+    color: #00bfa5;
+    position: absolute;
+    top: 370px;
+}
+.to-abs{
+    position: absolute;
+    top: 370px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+.to-abs span{
+    color: rgb(139, 139, 139);
+}
+
+.qr-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+.lower-landing{
+    padding-top: 80px;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 1245px){ 
+    .upper-landing{
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 30px;
+    }
+    .upper-left a, 
+    .to-abs{
+        display: inline-block;
+        padding-top: 20px;
+        position: relative;
+        top: 0px;
+    }
+    .upper-left{
+        padding-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 800px){
+    
+    .wrapper{
+        padding-bottom: 0px;
+        height: 100vh;
+    }
+    main{
+        padding-bottom: 0px;
+        width: 100%;
+        min-width: 500px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SCROLLBAR STYLING */
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #000000; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(136, 136, 136, 30%); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(145, 145, 145); 
+}

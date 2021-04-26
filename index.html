@@ -39,7 +39,7 @@
                                 <div class="add-contact-box" v-if="tabNuovoContatto.display" v-bind:class="resetDark">
                                     <input class="input-contact-name" type="text" placeholder="Aggiungi Contatto" v-model="tabNuovoContatto.nome" v-on:keyup.enter="addContact()">
                                     <span>Impostazioni</span>
-                                    <span>Disconnetti</span>
+                                    <a id="disconnect-redirect" href="disconnect-html/disconnected.html">Disconnetti</a>
                                 </div>
                             </div>
                         </div>
