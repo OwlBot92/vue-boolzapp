@@ -44,12 +44,13 @@ body{
 /* colonna contatti */
 .contact-column{
     width: 30%;
+    min-width: 240px;
     height: 100%;
 }
 
 /* psuedo nav utente */
 #user-pseudo-nav{
-    border-right: 1px solid lightgrey;
+    border-right: 1px solid #3f4448;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -377,6 +378,7 @@ body{
     cursor: pointer;
 }
 .send-msg input{
+    color: white;
     background-color: #33383b;
     border: none;
     outline: none;
@@ -585,9 +587,6 @@ body{
 
 
 
-
-
-
 @media screen and (max-width: 1450px){
     #main-window{
         height: 100vh;
@@ -595,9 +594,6 @@ body{
         max-width: 1550px;
     }
 }
-
-
-
 
 
 
