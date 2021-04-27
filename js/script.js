@@ -1,7 +1,10 @@
 var app = new Vue({
     el: "#root",
     data: {
+        userName:"Nico",
+        userStato: "I would be an owl because being human is so exhausting.",
         classShowInfo: "hide-class",
+        classUserInfo: "hide-info",
         lightDark: "Dark",
         selectedContact: 0,
         messaggio: "",
@@ -421,6 +424,13 @@ var app = new Vue({
         },
         openInfoContact(){
             this.classShowInfo = "show-class";
+        },
+
+        showUserInfo(){
+            this.classUserInfo = "show-info";
+        },
+        closeUserInfo(){
+            this.classUserInfo = "hide-info";
         }
     }
 });
