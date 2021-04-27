@@ -57,7 +57,7 @@ body{
 .user-input-box,
 .stato-profile{
     background-color: #131c21;
-    box-shadow: 1px 1px 5px rgb(0, 0, 0);
+    box-shadow: -5px 1px 5px rgb(0, 0, 0);
 }
 .user-input input{
     background-color: #131c21;
